@@ -10,16 +10,32 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
-    override func viewDidLoad() {
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descTextField: UITextField!
+    
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    @IBAction func saveButton(_ sender: AnyObject)
+    {
+        if (nameTextField.text == ""){
+            //Task Title is blank, do not add a record
+        } else {
+            //add record function
+            taskMgr.addTask(name: nameTextField.text!, desc: descTextField.text!)
+            
+            //dismiss keyboard and reset fields
+            nameTextField.resignFirstResponder()
+            descTextField.resignFirstResponder()
+            nameTextField.text = nil
+            descTextField.text = nil
+            
+        }
     }
-
-
+    
 }
 
